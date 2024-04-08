@@ -1,14 +1,10 @@
 import React from "react";
 import "./projects.css";
-import eucanna from "../../assets/eucanna.png";
-import lifeguide from "../../assets/lifeguide.png";
-import gethired from "../../assets/gethired.png";
-import ladyliberty from "../../assets/ladyliberty.png";
-import signlanguage from "../../assets/signlanguage.jpg";
 import hcImage from "../../assets/hc.png";
 import formBulderImage from "../../assets/formbuilder.png";
 import twiceShopImage from "../../assets/twiceShop.png";
 import PmaGridImage from "../../assets/PMA Gird.png";
+import noImg from "../../assets/No_picture_available_png.png";
 import co2 from "../../assets/co2.jpg";
 
 const Projects = () => {
@@ -52,7 +48,7 @@ const Projects = () => {
           {/* Thumbnail */}
           <div className="col-md-4">
             <img
-              src={gethired}
+              src={noImg}
               alt="EuCannaJobs Thumbnail"
               className="img-fluid"
             />
@@ -107,11 +103,7 @@ const Projects = () => {
         <div className="row mt-2 mb-3 p-5 border-bottom ">
           {/* Thumbnail */}
           <div className="col-md-4">
-            <img
-              src={ladyliberty}
-              alt="Prototype Thumbnail"
-              className="img-fluid"
-            />
+            <img src={noImg} alt="Prototype Thumbnail" className="img-fluid" />
           </div>
           {/* Project Name and Details */}
           <div className="col-md-8">
@@ -122,11 +114,7 @@ const Projects = () => {
         <div className="row mb-3 p-5 border-bottom ">
           {/* Thumbnail */}
           <div className="col-md-4">
-            <img
-              src={signlanguage}
-              alt="Prototype Thumbnail"
-              className="img-fluid"
-            />
+            <img src={noImg} alt="Prototype Thumbnail" className="img-fluid" />
           </div>
           {/* Project Name and Details */}
           <div className="col-md-8">
@@ -137,7 +125,11 @@ const Projects = () => {
         <div className="row mb-3 p-5 border-bottom">
           {/* Thumbnail */}
           <div className="col-md-4">
-            <img src={co2} alt="EuCannaJobs Thumbnail" className="img-fluid" />
+            <img
+              src={noImg}
+              alt="EuCannaJobs Thumbnail"
+              className="img-fluid"
+            />
           </div>
           {/* Project Name and Details */}
           <div className="col-md-8">

@@ -1,9 +1,9 @@
 import React from "react";
-import {useEffect, useRef, useState, useMemo} from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import profilePic from "../../assets/dan.jpg";
 import "./overview.css";
-import {useSpring, animated, useTransition, useSpringRef} from "react-spring";
-import {useGesture} from "react-use-gesture";
+import { useSpring, animated, useTransition, useSpringRef } from "react-spring";
+import { useGesture } from "react-use-gesture";
 import Trail from "../../components/trail/trail";
 
 const calcX = (y, ly) => -(y - ly - window.innerHeight / 2) / 20;
@@ -14,7 +14,7 @@ const calcY = (x, lx) => (x - lx - window.innerWidth / 2) / 20;
 const Overview = () => {
   const pages = useMemo(
     () => [
-      ({style}) => (
+      ({ style }) => (
         <animated.div
           style={{
             ...style,
@@ -30,7 +30,7 @@ const Overview = () => {
           </div>
         </animated.div>
       ),
-      ({style}) => (
+      ({ style }) => (
         <animated.div
           style={{
             ...style,
@@ -45,11 +45,11 @@ const Overview = () => {
             <span className="header2">I like...</span>
             <span>Learning new things</span>
             <span>Coding</span>
-            <span>Mapping things out</span>
+            <span>Solving Problems</span>
           </div>
         </animated.div>
       ),
-      ({style}) => (
+      ({ style }) => (
         <animated.div
           style={{
             ...style,
@@ -69,11 +69,9 @@ const Overview = () => {
               </div>
               <div className="col d-flex flex-column align-items-start">
                 <span>Full-Stack Web Development</span>
-                <span>3D Prototype Design</span>
               </div>
             </div>
           </div>
-
         </animated.div>
       ),
     ],
@@ -92,7 +90,7 @@ const Overview = () => {
   }, []);
 
   const domTarget = useRef(null);
-  const [{x, y, rotateX, rotateY, rotateZ, zoom, scale}, api] = useSpring(
+  const [{ x, y, rotateX, rotateY, rotateZ, zoom, scale }, api] = useSpring(
     () => ({
       rotateX: 0,
       rotateY: 0,
@@ -101,24 +99,24 @@ const Overview = () => {
       zoom: 0,
       x: 0,
       y: 0,
-      config: {mass: 5, tension: 350, friction: 40},
+      config: { mass: 5, tension: 350, friction: 40 },
     })
   );
 
   useGesture(
     {
-      onPinch: ({offset: [d, a]}) => api({zoom: d / 200, rotateZ: a}),
-      onMove: ({xy: [px, py], dragging}) =>
+      onPinch: ({ offset: [d, a] }) => api({ zoom: d / 200, rotateZ: a }),
+      onMove: ({ xy: [px, py], dragging }) =>
         !dragging &&
         api({
           rotateX: calcX(py, y.get()),
           rotateY: calcY(px, x.get()),
           scale: 1.1,
         }),
-      onHover: ({hovering}) =>
-        !hovering && api({rotateX: 0, rotateY: 0, scale: 1}),
+      onHover: ({ hovering }) =>
+        !hovering && api({ rotateX: 0, rotateY: 0, scale: 1 }),
     },
-    {domTarget, eventOptions: {passive: false}}
+    { domTarget, eventOptions: { passive: false } }
   );
 
   const [activeTrail, setActiveTrail] = useState(1);
@@ -133,9 +131,9 @@ const Overview = () => {
   const transitions = useTransition(index, {
     ref: transRef,
     keys: null,
-    from: {opacity: 0, transform: "translate3d(100%,0,0)"},
-    enter: {opacity: 1, transform: "translate3d(0%,0,0)"},
-    leave: {opacity: 0, transform: "translate3d(-50%,0,0)"},
+    from: { opacity: 0, transform: "translate3d(100%,0,0)" },
+    enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
+    leave: { opacity: 0, transform: "translate3d(-50%,0,0)" },
   });
   useEffect(() => {
     transRef.start();
@@ -221,9 +219,7 @@ const Overview = () => {
           <img src={profilePic} alt="profile-pic" className="profile-pic" />
           <div className="mt-3 mobilename">Dan Hendrix F. Villadolid</div>
           <div className="row mt-4 align-items-center">
-            <span className="col border-end mobiletitles">
-              HCX/Absi
-            </span>
+            <span className="col border-end mobiletitles">HCX/Absi</span>
             <span className="col mobiletitles">Jr. Software Engineer II</span>
           </div>
         </div>
